@@ -34,40 +34,40 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := cam bien nhiet do
+BUILD_ARTIFACT_NAME := cam bien nhiet do esp
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-cam\ bien\ nhiet\ do.elf \
+cam\ bien\ nhiet\ do\ esp.elf \
 
 MAP_FILES += \
-cam\ bien\ nhiet\ do.map \
+cam\ bien\ nhiet\ do\ esp.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-cam\ bien\ nhiet\ do.list \
+cam\ bien\ nhiet\ do\ esp.list \
 
 OBJCOPY_HEX += \
-cam\ bien\ nhiet\ do.hex \
+cam\ bien\ nhiet\ do\ esp.hex \
 
 OBJCOPY_BIN += \
-cam\ bien\ nhiet\ do.bin \
+cam\ bien\ nhiet\ do\ esp.bin \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: cam\ bien\ nhiet\ do.elf secondary-outputs
+main-build: cam\ bien\ nhiet\ do\ esp.elf secondary-outputs
 
 # Tool invocations
-cam\ bien\ nhiet\ do.elf cam\ bien\ nhiet\ do.map: $(OBJS) $(USER_OBJS) D:\Project\ embedded\cam\ bien\ nhiet\ do\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "cam bien nhiet do.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\Project embedded\cam bien nhiet do\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="cam bien nhiet do.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+cam\ bien\ nhiet\ do\ esp.elf cam\ bien\ nhiet\ do\ esp.map: $(OBJS) $(USER_OBJS) D:\Project\ embedded\cam\ bien\ nhiet\ do\ esp\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "cam bien nhiet do esp.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\Project embedded\cam bien nhiet do esp\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="cam bien nhiet do esp.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -76,24 +76,24 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-cam\ bien\ nhiet\ do.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "cam bien nhiet do.list"
+cam\ bien\ nhiet\ do\ esp.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "cam bien nhiet do esp.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-cam\ bien\ nhiet\ do.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "cam bien nhiet do.hex"
+cam\ bien\ nhiet\ do\ esp.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "cam bien nhiet do esp.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-cam\ bien\ nhiet\ do.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "cam bien nhiet do.bin"
+cam\ bien\ nhiet\ do\ esp.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "cam bien nhiet do esp.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) cam\ bien\ nhiet\ do.bin cam\ bien\ nhiet\ do.elf cam\ bien\ nhiet\ do.hex cam\ bien\ nhiet\ do.list cam\ bien\ nhiet\ do.map cam\\ bien\\ nhiet\\ do.elf default.size.stdout
+	-$(RM) cam\ bien\ nhiet\ do\ esp.bin cam\ bien\ nhiet\ do\ esp.elf cam\ bien\ nhiet\ do\ esp.hex cam\ bien\ nhiet\ do\ esp.list cam\ bien\ nhiet\ do\ esp.map cam\\ bien\\ nhiet\\ do\\ esp.elf default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
